@@ -1,6 +1,6 @@
 % layout 'default';
 
-% if ( my $screen_name = $self->session('screen_name') ) {
+% if ( $screen_name ) {
 <h3><a href="/">@<%= $screen_name %>さんのイカ娘タイムライン</a></h3>
 <ul>
   <li><a href="/logout">ログアウト</a></li>
