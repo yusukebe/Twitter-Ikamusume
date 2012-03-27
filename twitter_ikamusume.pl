@@ -2,6 +2,7 @@
 use Mojolicious::Lite;
 use Net::Twitter::Lite;
 use Acme::Ikamusume;
+use Plack::Builder;
 
 my $config = plugin('Config');
 my $nt = Net::Twitter::Lite->new(
@@ -61,4 +62,9 @@ get '/logout' => sub {
     $self->redirect_to( $self->req->url->base );
 };
 
-app->start;
+builder {
+    enable_if { $_[0]->{REMOTE_ADDR} eq '127.0.0.1' } 
+        "Plack::Middleware::ReverseProxy";
+    app->start;
+};
+
