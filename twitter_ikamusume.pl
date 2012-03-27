@@ -67,6 +67,7 @@ get '/logout' => sub {
 };
 
 builder {
+    enable "Plack::Middleware::AccessLog", format => "combined";
     enable 'Session', store => 'File';
     app->start;
 };
