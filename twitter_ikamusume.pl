@@ -16,10 +16,10 @@ get '/' => sub {
     if( $self->session('access_token') ) {
         $nt->access_token($self->session('access_token'));
         $nt->access_token_secret($self->session('access_token_secret'));
-        $tweets = $nt->home_timeline;
-        for my $tweet ( @$tweets ) {
+        for my $tweet ( @{$nt->home_timeline} ) {
             next if $tweet->{user}{protected};
             $tweet->{text} = Acme::Ikamusume->geso($tweet->{text});
+            push @$tweets, $tweet;
         }
     }
     $self->stash->{tweets} = $tweets;
