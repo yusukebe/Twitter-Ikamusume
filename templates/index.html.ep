@@ -1,0 +1,32 @@
+% layout 'default';
+
+% if ( my $screen_name = $self->session('screen_name') ) {
+<h3><a href="/">@<%= $screen_name %>さんのイカ娘タイムライン</a></h3>
+<ul>
+  <li><a href="/logout">ログアウト</a></li>
+</ul>
+% }else{ 
+<ul>
+  <li><a href="/login">Twitterログイン</a></li>
+</ul>
+<p>
+  Twitterログインをするとあなたのタイムラインがイカ娘化するでゲソ
+</p>
+% }
+
+% if($tweets) {
+
+<hr />
+
+% for my $tweet ( @$tweets ) {
+
+<p style="margin-bottom:1em;padding-bottom:1em;border-bottom:1px dotted #ccc;">
+  <img src="<%= $tweet->{user}{profile_image_url} %>" alt=""
+       width="36" height="36" style="float:left;margin-right:1em;"/>
+  <a href="http://twitter.com/<%= $tweet->{user}{screen_name} %>" 
+     target="_blank">@<%= $tweet->{user}{screen_name} %></a>: <%= $tweet->{text} %>
+  <span style="display:block;clear:both;"></span>
+</p>
+
+% }
+% }

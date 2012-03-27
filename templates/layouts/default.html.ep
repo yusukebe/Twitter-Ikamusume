@@ -1,0 +1,17 @@
+<!DOCTYPE html>  
+<html lang="ja">  
+  <head>  
+    <meta charset="utf-8">  
+    <title>イカ娘タイムライン</title>
+  </head>
+  <body style="width:500px;margin:20px auto;">
+    <h1>イカ娘タイムライン</h1>
+    <%= content %>
+    <br />
+    <hr />
+    <address>
+      イカ娘タイムラインは<a href="http://search.cpan.org/dist/Acme-Ikamusume/">Acme::Ikamusume</a>を使って、
+      <a href="http://twitter.com/yusukebe">@yusukebe</a> が開発をしました。
+    </address>
+  </body>
+</html>
