@@ -52,13 +52,13 @@ get '/callback' => sub {
             screen_name         => $screen_name
         }
     );
-    $self->redirect_to('/');
+    $self->redirect_to( $self->req->url->base );
 };
 
 get '/logout' => sub {
     my $self = shift;
     $self->session(expires => 1);
-    $self->redirect_to('/');
+    $self->redirect_to( $self->req->url->base );
 };
 
 app->start;
